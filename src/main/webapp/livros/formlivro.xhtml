@@ -9,21 +9,29 @@
 <h:form>
 	<div>
 		<h:outputLabel value="Título" />
-		<h:inputText value="#{adminLivroBean.livro.titulo}"/>
+		<h:inputText value="#{adminLivroBean.livro.titulo}" />
 	</div>
 	<div>
 		<h:outputLabel value="Descrição" />
-		<h:inputTextarea rows="4" cols="20" value="#{adminLivroBean.livro.descricao}" />
+		<h:inputTextarea rows="4" cols="20"
+			value="#{adminLivroBean.livro.descricao}" />
 	</div>
 	<div>
 		<h:outputLabel value="Número de Páginas" />
-		<h:inputText  value="#{adminLivroBean.livro.numeroPaginas}"/>
+		<h:inputText value="#{adminLivroBean.livro.numeroPaginas}" />
 	</div>
 	<div>
 		<h:outputLabel value="Preço" />
 		<h:inputText value="#{adminLivroBean.livro.preco}" />
 	</div>
-	<h:commandButton value="Cadastrar" action="#{adminLivroBean.salvar}"/>
+	<div>
+		<h:outputLabel value="Autores" />
+		<h:selectManyListbox value="#{adminLivroBean.autoresId}" converter="javax.faces.Integer" > 
+			<f:selectItems value="#{adminLivroBean.autores}" var="autor"
+				itemValue="#{autor.id}" itemLabel="#{autor.nome}" />
+		</h:selectManyListbox>
+	</div>
+	<h:commandButton value="Cadastrar" action="#{adminLivroBean.salvar}" />
 </h:form>
 
 </html>

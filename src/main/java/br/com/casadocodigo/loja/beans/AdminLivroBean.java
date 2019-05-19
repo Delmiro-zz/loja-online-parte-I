@@ -30,12 +30,12 @@ public class AdminLivroBean {
 		return autorDao.listarAutores();
 	}
 
-	public void salvar() {
+	public String salvar() {
 		for (Integer autorId : autoresId) {
 			livro.getAutores().add(new Autor(autorId));
 		}
 		livroDao.salvar(livro);
-		System.out.println("Livro cadastrado: " + livro);
+		return "/livros/lista?faces-redirect=true";	
 	}
 
 	public Livro getLivro() {

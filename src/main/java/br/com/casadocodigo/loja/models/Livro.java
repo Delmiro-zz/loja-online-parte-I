@@ -2,6 +2,7 @@ package br.com.casadocodigo.loja.models;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -23,13 +26,13 @@ public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@NotBlank
 	private String titulo;
 
-	@Length(min=10)
+	@Length(min = 10)
 	private String descricao;
-	
+
 	@DecimalMin("20")
 	private BigDecimal preco;
 
@@ -38,8 +41,11 @@ public class Livro {
 
 	@ManyToMany
 	@NotNull
-	@Size(min=1)
+	@Size(min = 1)
 	private List<Autor> autores = new ArrayList<Autor>();
+
+	@Temporal(TemporalType.DATE)
+	private Calendar dataPublicacao;
 
 	public String getTitulo() {
 		return titulo;
@@ -79,6 +85,14 @@ public class Livro {
 
 	public void setAutores(List<Autor> autores) {
 		this.autores = autores;
+	}
+
+	public Calendar getDataPublicacao() {
+		return dataPublicacao;
+	}
+
+	public void setDataPublicacao(Calendar dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
 	}
 
 	@Override

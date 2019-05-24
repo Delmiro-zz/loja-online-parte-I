@@ -32,6 +32,10 @@
 		</h:selectManyListbox>
 		<h:message for="autores"/>
 	</div>
+	<div>
+		<h:outputLabel value="Data de Publicação"/>
+		<h:inputText value="#{adminLivroBean.livro.dataPublicacao.time}"/>
+	</div>
 	<h:commandButton value="Cadastrar" action="#{adminLivroBean.salvar}" />
 </h:form>
 

@@ -2,7 +2,8 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:form>
+
+<h:form enctype="multipart/form-data">
 	<div>
 		<h:outputLabel value="Título" />
 		<h:inputText value="#{adminLivroBean.livro.titulo}" required="true" id="titulo"/>
@@ -38,6 +39,11 @@
 	<div>
 		<h:outputLabel value="Data de Publicação"/>
 		<h:inputText value="#{adminLivroBean.livro.dataPublicacao}"/>
+	</div>
+	<div>
+		<h:outputLabel value="Capa do Livro"/>
+		<h:inputFile value="#{adminLivroBean.capaLivro}" id="capaLivro"/>
+		<h:message for="capaLivro"/>
 	</div>
 	<h:commandButton value="Cadastrar" action="#{adminLivroBean.salvar}" />
 </h:form>
